@@ -7,6 +7,7 @@
 using namespace std;
 
 int main(){
+	cout <<endl<<"\tTask generator: You have to do the previous Task for at least an hour before generating a new one"<<endl<<endl<<endl<<endl;
     vector<string> Tasks;
     int randex;
     srand((int)time(0));
@@ -25,7 +26,7 @@ int main(){
         //=======================================================================================================RANDOMIZER
         if (Tasks.size()!=0)
         {randex=rand()%Tasks.size();
-        cout << " The chosen TASK is '"<<Tasks[randex]<<"'" << endl;}
+        cout << "\t\t\t\t\t\tThe chosen TASK is :\n\n\n\t\t\t\t\t\t\t"<<Tasks[randex] << endl;}
         //=======================================================================================================SELECT
 
         char choice;
