@@ -7,5 +7,5 @@ that I want to do and itrandomly chooses one for me.
 
 ------------------------------------
     Todo-
-1- Add some sort of priority to tasks
-2- develop a GUI
+-[ ] Add some sort of priority to tasks
+-[ ] develop a GUI
