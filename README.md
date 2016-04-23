@@ -6,6 +6,6 @@ So I created ths app in order to do the deciding part for me. I basically feed i
 that I want to do and itrandomly chooses one for me.
 
 ------------------------------------
-    Todo-
-1- Add some sort of priority to tasks
-2- develop a GUI
+####Task list:
+- [ ] Add some sort of priority to tasks
+- [ ] develop a GUI
