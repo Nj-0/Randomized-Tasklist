@@ -18,13 +18,42 @@ int prioritize(string task,string pri)
 	return 0;
 }
 
+void generateOptions()
+{
+	string Temp,t;
+	char choice;
+	cin >> choice;
+
+	if(choice == '1'){ //==================================================================================INSERT
+		cout << "Please enter : ";
+		cin>> Temp>>t;
+		prioritize(Temp,t);}
+
+	else if (choice == '2'){//==============================================================================LIST
+		cout << "Listing Tasks. " << endl;
+			for(int i = 0; i<HiPri.size(); i++)		cout <<"Hi Priority\t"<< HiPri[i]<<endl;
+			for(int i = 0; i<MedPri.size(); i++)	cout <<"Me Priority\t"<< MedPri[i]<<endl;
+			for(int i = 0; i<LoPri.size(); i++)		cout <<"Lo Priority\t"<< LoPri[i]<<endl;}
+	else if(choice == '0'){ //===============================================================================EXIT/STORE
+		ofstream f("Tasklist.txt");
+		if(f.is_open())
+			for(int i = 0; i<HiPri.size(); i++)		f << HiPri[i]<<" 3"<<endl;
+			for(int i = 0; i<MedPri.size(); i++)	f << MedPri[i]<<" 2"<<endl;
+			for(int i = 0; i<LoPri.size(); i++)		f << LoPri[i]<<" 1"<<endl;
+			f.close();
+			exit(0);}
+	else//=======================================================================================================HELP
+	   {cout << "1. Enter \" <Task> <Priority(1-3)> \" ." << endl;
+		cout << "2. List." << endl;
+		cout << "0. Exit." << endl;}
+}
+
 int main(){
 	int randex;
 	srand((int)time(0));
 	string Temp,t;
 	stringstream seperator;
-
-	 time_t ti = time(0);   // get time now
+	time_t ti = time(0);   // get time now
     struct tm * now = localtime( & ti );
 	//=======================================================================================================RETRIEVE
 	ifstream input("Tasklist.txt");
@@ -40,31 +69,6 @@ int main(){
 		{//Task=HiPri[rand()%HiPri.size();
 		cout << "\t\t\t\t\t\tThe chosen TASK is :\n\n\n\t\t\t\t\t\t\t"<<HiPri[randex] << endl;}
 	//=======================================================================================================SELECT
-	while (1)   {
-		char choice;
-		cin >> choice;
-
-		if(choice == '1'){ //==================================================================================INSERT
-			cout << "Please enter : ";
-			cin>> Temp>>t;
-			prioritize(Temp,t);}
-
-		else if (choice == '2'){//==============================================================================LIST
-			cout << "Listing Tasks. " << endl;
-				for(int i = 0; i<HiPri.size(); i++)		cout <<"Hi Priority\t"<< HiPri[i]<<endl;
-				for(int i = 0; i<MedPri.size(); i++)	cout <<"Me Priority\t"<< MedPri[i]<<endl;
-				for(int i = 0; i<LoPri.size(); i++)		cout <<"Lo Priority\t"<< LoPri[i]<<endl;}
-		else if(choice == '0'){ //===============================================================================EXIT/STORE
-			ofstream f("Tasklist.txt");
-			if(f.is_open())
-				for(int i = 0; i<HiPri.size(); i++)		f << HiPri[i]<<" 3"<<endl;
-				for(int i = 0; i<MedPri.size(); i++)	f << MedPri[i]<<" 2"<<endl;
-				for(int i = 0; i<LoPri.size(); i++)		f << LoPri[i]<<" 1"<<endl;
-				f.close();
-				break;}
-		else//=======================================================================================================HELP
-		   {cout << "1. Enter \" <Task> <Priority(1-5)> \" ." << endl;
-			cout << "2. List." << endl;
-			cout << "0. Exit." << endl;}
-
-	}}
+	while (1)
+		generateOptions();   
+}
